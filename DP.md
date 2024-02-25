@@ -28,3 +28,11 @@
      ___[4 3 3]\(5) ->[4 3]\(5) -> [4]\(5) -> []\(5) -> [5]<br/>
      idx[0 1 4]\(5) ->[0 1]\(5) -> [0]\(5) -> []\(5) -> [5]<br/>
 
+# Unique Path
+[62. Unique Paths](https://leetcode.com/problems/unique-paths/description/)&nbsp;&nbsp; grid 左上角至右下角，只能向右或向下，有多少种走法<br/>
+解：grid[i][j] = grid[i-1][j] + grid[i][j-1]，再优化成一行DP <br/>
+
+[63. Unique Paths II](https://leetcode.com/problems/unique-paths/description/)&nbsp;&nbsp; 62基础上增加 block cell
+
+[980. Unique Paths III](https://leetcode.com/problems/unique-paths-iii/description/)&nbsp;&nbsp; 4个方向走，带block cell，要求走完所有空格，最后到某一终点<br/>
+解：backtrack + DFS 3^N 复杂度，没有更优的方法
