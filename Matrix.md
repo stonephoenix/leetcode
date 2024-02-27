@@ -10,6 +10,7 @@ while is_valid(x + dx):
   process_new_x(x)
 ```
 [885. Spiral Matrix III](https://leetcode.com/problems/spiral-matrix-iii/submissions/1187965910/) &nbsp;&nbsp; 
-![image](https://github.com/stonephoenix/leetcode/assets/11725857/65acf868-c1aa-4744-8fa7-ac2f724b4470)
+![image](https://github.com/stonephoenix/leetcode/assets/11725857/a4e48d74-78da-40ba-97c0-371e79f0d744)
+
 解：假如下一步已经填了数，则不填，但把坐标移到空位，或者边界； <br/>
 此时位置上假如是空值，则填数，同时判断下一个方向，若可以填数/或者在边界外，则停止填数；若位置上仍有数，不操作，使用下一个方向。
