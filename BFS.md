@@ -6,4 +6,7 @@
 其它：这个题要记录来源方向，下一次走必须走另一方向（横着来只能竖着走下一步，不能横着，横着就回去了）
 
 
-
+# Island
+[827. Making A Large Island](https://leetcode.com/problems/making-a-large-island/description/) &nbsp;&nbsp; 允许将一个水域0转为陆地1，求最大的陆地面积 <br/>
+解：每次BFS找所有陆地时，把boundary存起来，再用一个 dict 把每一个boundary cell 旁边的陆地面积存起来，下次这个 cell 又成为另外一片陆地的 boundary 时，面积累计起来。 <br/>
+注意：corner case：grid 全为 0 或者 全为 1
