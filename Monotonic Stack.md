@@ -17,8 +17,12 @@ heights : [1 2 2 4 3] <- 2 <br/>
 idx stack:[0 1 2 _ 4] <- 5=i
 stack val:[1 2 2 _ 3] <- 2 , 此时需要把 heights[4]（val=3）给 pop 出来，但 值 3 的左侧，有一个更高的 4 在之前被pop出去了，因此宽度应该使用 i - stack[-1] - 1
 
-[85. Maximal Rectangle](https://leetcode.com/problems/maximal-rectangle/submissions/1188882670/)  &nbsp;&nbsp; 0/1 matrix 中找最大矩形<br/>
+[85. Maximal Rectangle](https://leetcode.com/problems/maximal-rectangle/submissions/1188882670/)  &nbsp;&nbsp; 0/1 matrix 中找最大矩形 <br/>
 解：沿列方向 presum，就变成问题 84 了。
+
+[1793. Maximum Score of a Good Subarray](https://leetcode.com/problems/maximum-score-of-a-good-subarray/description/) &nbsp;&nbsp; 包含 index = k 的最大矩形面积 <br/>
+解：对每一个数，找到以它为最低点的 最大矩形面积，以及左右边界。再遍历每一个数对应的左右边界，假如覆盖了 k 则有效，找所有有效的最大面积。 <br/>
+左右两个方向分别 用 mono stack 找一次 next smaller。
 
 # Range Sum 问题： Binary Indexed Tree
 [308. Range Sum Query 2D - Mutable](https://leetcode.com/problems/range-sum-query-2d-mutable/description/)
