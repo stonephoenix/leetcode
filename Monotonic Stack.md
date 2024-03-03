@@ -1,6 +1,10 @@
 # [Monotonic Stack](https://leetcode.com/tag/monotonic-stack/) <br/>
-构建过程，本质上是，在右侧找到 第一个小于自己的数 <br/>
-最后的stack属性：两两相邻的数，左值小于等于右值，在构建中被 pop 出去的数，都是大于右值的数。 <br/>
+递增 stack，能保留在栈中的数 nums[i]=v，说明右侧加进来的值都大于 v, 当 v 被 pop 出时，表示找到了第一个小于 v 的数。 <br/>
+=> 性质1: 构建过程，本质上是，在右侧找到 第一个小于自己的数 <br/>
+=> 性质2: 入栈 new_v 时，pop 出去的数，是大于 new_v 的连续递增序列（递减的数在之前就被 pop 出去了） <br/>
+=> 最后的stack属性：两两相邻的数，左值小于等于右值，在构建中被 pop 出去的数，都是大于右值的数。 <br/>
+
+[1762. Buildings With an Ocean View](https://leetcode.com/problems/buildings-with-an-ocean-view/submissions/1190821863/)&nbsp;&nbsp; 构建一个递减序列
 
 [84. Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/description/) &nbsp;&nbsp; 柱状图中找最大面积 <br/>
 解：先简化问题，假如是递增柱图 [1, 2, 3, 4]，需要计算 idx[0:3] (both inclusive), idx[1:3], idx[2:3], idx[3:3] 这些面积 <br/>
@@ -24,5 +28,11 @@ stack val:[1 2 2 _ 3] <- 2 , 此时需要把 heights[4]（val=3）给 pop 出来
 解：对每一个数，找到以它为最低点的 最大矩形面积，以及左右边界。再遍历每一个数对应的左右边界，假如覆盖了 k 则有效，找所有有效的最大面积。 <br/>
 左右两个方向分别 用 mono stack 找一次 next smaller。
 
+[1944. Number of Visible People in a Queue](https://leetcode.com/problems/number-of-visible-people-in-a-queue/description/)&nbsp;&nbsp; 找 nums[i]=v 右侧值均小于 v 的连续递增序列个数 <br/>
+解：考查性质2，由于是往右找被pop出去的数，因此从右往左扫描 nums
+
 # Range Sum 问题： Binary Indexed Tree
 [308. Range Sum Query 2D - Mutable](https://leetcode.com/problems/range-sum-query-2d-mutable/description/)
+
+# Find All Next Larger Numbers 问题： Segment Tree
+[2940. Find Building Where Alice and Bob Can Meet](https://leetcode.com/problems/find-building-where-alice-and-bob-can-meet/solutions/4305014/segment-tree-binary-search/)
