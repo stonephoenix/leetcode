@@ -35,4 +35,53 @@ stack val:[1 2 2 _ 3] <- 2 , 此时需要把 heights[4]（val=3）给 pop 出来
 [308. Range Sum Query 2D - Mutable](https://leetcode.com/problems/range-sum-query-2d-mutable/description/)
 
 # Find All Next Larger Numbers 问题： Segment Tree
-[2940. Find Building Where Alice and Bob Can Meet](https://leetcode.com/problems/find-building-where-alice-and-bob-can-meet/solutions/4305014/segment-tree-binary-search/)
+[2940. Find Building Where Alice and Bob Can Meet](https://leetcode.com/problems/find-building-where-alice-and-bob-can-meet/solutions/4305014/segment-tree-binary-search/)  &nbsp;&nbsp; 在 i, j 右侧找到比 nums[i], nums[j] 都大的第一个数 <br/>
+解：用 mono stack 的方法，可能出现 i < j, nums[i] > nums[j] 但 nums[i] 下一个更大的数 nums[k]，位置在 j 左边 ie k < j，此时，需要继续找 nums[k] 下一个最大的数，直到位置在 j 右侧。超时。 <br/>
+使用 线段树， segment tree
+```
+class SegTree:
+    ''' 由于完全二叉树需要的空间为 2^n - 1，因此存放节点值的索引 可以从 1 开始，直到最末，方便操作。
+    '''
+    def __init__(self, a):
+        # save max
+        self.a = a
+        self.v = [0] * (len(a) * 4)
+        self._build(0, len(self.a) - 1, 1)
+
+    def _build(self, left, right, idx):
+        ''' left, right 是输入 a 的索引，idx 是线段树节点编号。
+        '''
+        if left == right:
+            self.v[idx] = self.a[left]
+            return
+        mid = left + (right - left) // 2
+        self._build(left, mid, idx * 2)
+        self._build(mid + 1, right, idx * 2 + 1)
+        self.v[idx] = max(self.v[idx * 2], self.v[idx * 2 + 1])
+```
+常规是搜索 [left, right] inclusive 中最大数的位置。 <br/>
+在这题中，需要在[left, right] inclusive 区间中找到 大于 target 的最左侧的数（即先搜左边，若没有，再搜右边）
+```
+    def find(self, target, left, right, sg_left, sg_right, idx, debug=False):
+        # 在 a[left，right] inclusive 区间中，找到最左边，最大值 > target
+        if debug:
+            print(sg_left, sg_right, 'idx', idx, self.v[idx], 't', target)
+        if self.v[idx] <= target:
+            return -1
+        if sg_left == sg_right:
+            if self.v[idx] <= target:
+                return -1
+            else:
+                return sg_left
+        sg_mid = sg_left + (sg_right - sg_left) // 2
+        leftmost = -1
+        if left <= sg_mid:
+            leftmost = self.find(target, left, right, 
+                                 sg_left, sg_mid, idx * 2, debug)
+            if leftmost != -1:
+                return leftmost
+        if right > sg_mid:
+            leftmost = self.find(target, left, right, 
+                                 sg_mid + 1, sg_right, idx * 2 + 1, debug)
+        return leftmost
+```
