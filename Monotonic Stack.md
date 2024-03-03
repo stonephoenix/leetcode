@@ -31,6 +31,11 @@ stack val:[1 2 2 _ 3] <- 2 , 此时需要把 heights[4]（val=3）给 pop 出来
 [1944. Number of Visible People in a Queue](https://leetcode.com/problems/number-of-visible-people-in-a-queue/description/)&nbsp;&nbsp; 找 nums[i]=v 右侧值均小于 v 的连续递增序列个数 <br/>
 解：考查性质2，由于是往右找被pop出去的数，因此从右往左扫描 nums
 
+[907. Sum of Subarray Minimums](https://leetcode.com/problems/sum-of-subarray-minimums/description/)&nbsp;&nbsp; 给定 nums，求 sum(min(subarray)) for all subarrays. <br/>
+eg. nums=[1,4,2], ans=sum(min(nums[0:1]), min(nums[0:2]), min(nums[0:3]), min(nums[1:2]), min(nums[1:3]), min(nums[2:3])) <br/>
+解：找出以当前值为 最小值 的左右边界，再反算出组合数目。 <br/>
+注意：相同的数，左边界包含并继续拓展，右边界不包含，以消除重复计算。
+
 # Range Sum 问题： Binary Indexed Tree
 [308. Range Sum Query 2D - Mutable](https://leetcode.com/problems/range-sum-query-2d-mutable/description/)
 
