@@ -28,6 +28,76 @@
      ___[4 3 3]\(5) ->[4 3]\(5) -> [4]\(5) -> []\(5) -> [5]<br/>
      idx[0 1 4]\(5) ->[0 1]\(5) -> [0]\(5) -> []\(5) -> [5]<br/>
 
+# Word Break
+[139. Word Break](https://leetcode.com/problems/word-break/description/)&nbsp;&nbsp; 给一个长字符串 s 和单词表，是否能将 s 分解成单词表中都有的单词。<br/>
+解：从左往右遍历 i，对每一个单词，检查一下 s[i - len(word) + 1 : (i + 1)] == word and memo[i + 1 - len(word)] == 1
+
+[140. Word Break II](https://leetcode.com/problems/word-break-ii/)&nbsp;&nbsp; 给一个长字符串 s 和单词表，找到所有将 s 分解成单词表中都有的单词 的结果。<br/>
+解：backtrack + memo，假如 s 左段在单词表中，递归找 s 右边剩下的一大段。 memo中记录所有已找到的分解方式。
+```
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
+        # 递归 + memo 剪枝
+        wordSet = set(wordDict)
+        memo = defaultdict(list)
+
+        def helper(s):
+            if s in memo:
+                return memo[s]
+            if s == "":
+                return []
+            if s in wordSet:
+                memo[s].append(s)
+            for i in range(1, len(s)):
+                left = s[0 : i]
+                if left in wordSet:
+                    right_list = helper(s[i::])
+                    if right_list:
+                        memo[s].extend([left + ' ' + right for right in right_list])
+            return memo[s]
+        helper(s)
+        return memo[s]
+```
+[472. Concatenated Words](https://leetcode.com/problems/concatenated-words/description/)&nbsp;&nbsp; 给 list of string，字典也是它，找到能分割成至少2个单词的 单词。。<br/>
+解：同上，把 prefix 也可以加到 memo 中。
+```
+        def helper(word, i, preparts=0):
+            # start from word[i], to end, must split
+            if preparts >= 2:
+                memo.add(word[0:i])
+
+            s = word[i::]
+            if s in memo:
+                return 2
+            if s in fail:
+                if s in d:
+                    return 1
+                else:
+                    return -1
+
+            
+            '''
+            # d might be very large
+            for w in d:
+                if len(w) < len(word) - i and w == word[i : (i + len(w))]:
+                    rsplits = helper(word, i + len(w), preparts + 1)
+                    if rsplits >= 1:
+                        memo.add(s)
+                        return 2
+            '''
+            # 
+            for j in range(i + 1, len(word)):
+                if word[i:j] in d:
+                    rsplits = helper(word, j, preparts + 1)
+                    if rsplits >= 1:
+                        memo.add(s)
+                        return 2
+            fail.add(s)
+            if s in d:
+                return 1
+            return -1
+```
+
 # Unique Path
 [62. Unique Paths](https://leetcode.com/problems/unique-paths/description/)&nbsp;&nbsp; grid 左上角至右下角，只能向右或向下，有多少种走法<br/>
 解：grid[i][j] = grid[i-1][j] + grid[i][j-1]，再优化成一行DP <br/>
