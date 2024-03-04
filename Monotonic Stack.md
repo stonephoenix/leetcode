@@ -36,6 +36,9 @@ eg. nums=[1,4,2], ans=sum(min(nums[0:1]), min(nums[0:2]), min(nums[0:3]), min(nu
 解：找出以当前值为 最小值 的左右边界，再反算出组合数目。 <br/>
 注意：相同的数，左边界包含并继续拓展，右边界不包含，以消除重复计算。
 
+[2104. Sum of Subarray Ranges](https://leetcode.com/problems/sum-of-subarray-ranges/description/)&nbsp;&nbsp; 给定 nums，求 sum(max(subarray) - min(subarray)) for all subarrays. <br/>
+解：==> sum(max(subarray)) - sum(min(subarray)) ==> 上一题 907
+
 # Range Sum 问题： Binary Indexed Tree
 [308. Range Sum Query 2D - Mutable](https://leetcode.com/problems/range-sum-query-2d-mutable/description/)
 
