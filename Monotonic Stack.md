@@ -1,7 +1,10 @@
-# [Monotonic Stack](https://leetcode.com/tag/monotonic-stack/) <br/>
+# [Monotonic Stack](https://leetcode.com/tag/monotonic-stack/) 栈中一般存 idx, 不是值 num[idx]<br/>
 递增 stack，能保留在栈中的数 nums[i]=v，说明右侧加进来的值都大于 v, 当 v 被 pop 出时，表示找到了第一个小于 v 的数。 <br/>
 => 性质1: 构建过程，本质上是，在右侧找到 第一个小于自己的数 <br/>
 => 性质2: 入栈 new_v 时，pop 出去的数，是大于 new_v 的连续递增序列（递减的数在之前就被 pop 出去了） <br/>
+题 1944 <br/>
+=> 性质3: dec stack, 被 pop 出去的 nums[idx], 是 [s[-1] + 1, new_idx - 1] 左右包含 区间中的最大值，即找到了 最大值为 nums[idx] 的最大区间。 <br/>
+题 907, 2004
 => 最后的stack属性：两两相邻的数，左值小于等于右值，在构建中被 pop 出去的数，都是大于右值的数。 <br/>
 
 [1762. Buildings With an Ocean View](https://leetcode.com/problems/buildings-with-an-ocean-view/submissions/1190821863/)&nbsp;&nbsp; 构建一个递减序列
