@@ -106,7 +106,7 @@ minCost(num[0:n]) = minCost(
   no cut -> imp(nums[0:n]),
   cut i  -> minCost(nums[0:i]) + imp(nums[i:n])
 )
-# 直接计算 0:n 当然不行，使用 DP 从 j=1..n，就得到 转移公式
+#_直接计算 0:n 当然不行，使用 DP 从 j=1..n，就得到 转移公式
 minCost(num[0:j]) = minCost(
   no cut -> imp(nums[0:j]),
   cut i  -> minCost(nums[0:i]) + imp(nums[i:j])
