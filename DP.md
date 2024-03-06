@@ -33,7 +33,8 @@
 解：从左往右遍历 i，对每一个单词，检查一下 s[i - len(word) + 1 : (i + 1)] == word and memo[i + 1 - len(word)] == 1
 
 [140. Word Break II](https://leetcode.com/problems/word-break-ii/)&nbsp;&nbsp; 给一个长字符串 s 和单词表，找到所有将 s 分解成单词表中都有的单词 的结果。<br/>
-解：backtrack + memo，假如 s 左段在单词表中，递归找 s 右边剩下的一大段。 memo中记录所有已找到的分解方式。
+解：可以采用139的方法，分别找出 s[0:1], s[0:2], s[0:3] ... s[0:len] 的所有分解方式。<br/>
+也可以使用 backtrack + memo，假如 s 左段在单词表中，递归找 s 右边剩下的一大段。 memo中记录所有已找到的分解方式。<br/>
 ```
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
@@ -58,6 +59,7 @@ class Solution:
         helper(s)
         return memo[s]
 ```
+
 [472. Concatenated Words](https://leetcode.com/problems/concatenated-words/description/)&nbsp;&nbsp; 给 list of string，字典也是它，找到能分割成至少2个单词的 单词。。<br/>
 解：同上，把 prefix 也可以加到 memo 中。
 ```
@@ -97,6 +99,19 @@ class Solution:
                 return 1
             return -1
 ```
+[2547. Minimum Cost to Split an Array](https://leetcode.com/problems/minimum-cost-to-split-an-array/description/) &nbsp;&nbsp; importance value (IV) = len(duplicated numbers in subarray), 找到 split 的方法，让 sum(IV) 最小。<br/>
+解：split 的题通常都可以使用递归方式来解，右侧作为整体不 split，从一个 item 开始扩展更多的 item, 左侧可以 split。然后用 DP 的思路，左侧可以split的结果存在 memo 中。
+''' 
+minCost(num[0:n]) = minCost(
+  no cut -> imp(nums[0:n]),
+  cut i  -> minCost(nums[0:i]) + imp(nums[i:n])
+)
+# 直接计算 0:n 当然不行，使用 DP 从 j=1..n，就得到 转移公式
+minCost(num[0:j]) = minCost(
+  no cut -> imp(nums[0:j]),
+  cut i  -> minCost(nums[0:i]) + imp(nums[i:j])
+)
+'''
 
 # Unique Path
 [62. Unique Paths](https://leetcode.com/problems/unique-paths/description/)&nbsp;&nbsp; grid 左上角至右下角，只能向右或向下，有多少种走法<br/>
