@@ -108,6 +108,10 @@ class Solution:
                 return 1
             return -1
 ```
+[320. Generalized Abbreviation](https://leetcode.com/problems/generalized-abbreviation/) &nbsp;&nbsp; k个字母简写成数字k, 禁止连续缩写，求所有缩写结果（可不缩写）。<br/>
+解：处理 word[i:]. word[i] 不缩写，可以直接与 word[i+1:] 缩写，或不缩写的结果拼接。word[i]缩写 = abbr(word[i:i+1]) + word[i+1:] 不缩写结果，abbr(word[i:i+2]) + word[i+2:] 不缩写结果 。。。<br/>
+注意：base case，可以用一个字母 a 来处理，发现 base case 应该是 i == len(word), 返回 [不缩写=set(['']), 缩写=set([''])] <br/>
+
 ## Split Array 题：通常是找 min/max sum(cost)，构建转移公式实现 DP，将排列组合 K！复杂度降为 K^2。
 ## <span style="color:red;">还有一种看上去相近，需要找 min(每一段的 max(cost)), 需要找某单边区间最小/大值 </span>，此时问题转变为 binary search 问题，核心是构建 is_valid(). 例如 [410. Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/description/)
 [2547. Minimum Cost to Split an Array](https://leetcode.com/problems/minimum-cost-to-split-an-array/description/) &nbsp;&nbsp; importance value (IV) = len(duplicated numbers in subarray), 找到 split 的方法，让 sum(IV) 最小。<br/>
