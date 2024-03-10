@@ -136,5 +136,11 @@ minCost(num[0:j]) = minCost(
 
 [63. Unique Paths II](https://leetcode.com/problems/unique-paths/description/)&nbsp;&nbsp; 62基础上增加 block cell
 
-[980. Unique Paths III](https://leetcode.com/problems/unique-paths-iii/description/)&nbsp;&nbsp; 4个方向走，带block cell，要求走完所有空格，最后到某一终点<br/>
+[980. Unique Paths III](https://leetcode.com/problems/unique-paths-iii/description/) &nbsp;&nbsp; 4个方向走，带block cell，要求走完所有空格，最后到某一终点<br/>
 解：backtrack + DFS 3^N 复杂度，没有更优的方法
+
+[2435. Paths in Matrix Whose Sum Is Divisible by K](https://leetcode.com/problems/paths-in-matrix-whose-sum-is-divisible-by-k/description/) &nbsp;&nbsp; 左上至右下之和为k倍数的路径数。<br/>
+解：DFS + memo[(i,j)]={remainder: dfs path count} ; 更优的应该是分别从 左上，右下 一行一行DP，然后在中间汇合(其实只需要两行memo即可)。
+
+__[741. Cherry Pickup](https://leetcode.com/problems/cherry-pickup/description/)__ &nbsp;&nbsp; 左上至右下，再回来，求最多摘草莓数。<br/>
+解：比较难，列出所有 DFS 摘的草莓 用 bit 表示位置，然后两两进行 ｜ 操作（？）
