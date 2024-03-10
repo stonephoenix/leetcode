@@ -16,3 +16,7 @@
 解：从左往右，) 多的时候，检查是否有可 flip 的 (，可以实现左区间 valid；右区间使用 从右往左 扫描的方法。<br/>
 __[301. Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/)__ &nbsp;&nbsp; 移除最少的多余括号，并返回所有可能结果<br/>
 解：先找到右括号多的右边界 rightmost_boundary 以及多的个数，再找到左括号多的个数，backtrack，rightmost_boundary 之前可删除或者保留右括号，之后可删除或保留左括号。
+
+# Path in Grid
+[980. Unique Paths III](https://leetcode.com/problems/unique-paths-iii/description/) &nbsp;&nbsp; 
+解：DFS + backtrack
