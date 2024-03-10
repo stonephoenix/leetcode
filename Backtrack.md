@@ -1,4 +1,5 @@
-#一般为排列组合类问题，通过剪枝 O(2^N) -> O(2^K)
+通常借用 hashtable 保存状态，一些简单的见[Hashtable](https://github.com/stonephoenix/leetcode/blob/main/Hashtable.md)
+# 一般为排列组合类问题，通过剪枝 O(2^N) -> O(2^K)
 
 ## 括号问题: 
 ### 性质1: 右括号一多，即可判定 invalid，左括号多，需要到最后才能判定。
