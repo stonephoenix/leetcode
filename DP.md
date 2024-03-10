@@ -27,6 +27,15 @@
      idx[0 1 2 3]\(4) -> [0 1]\(4) -> [0 1 4]<br/>
      ___[4 3 3]\(5) ->[4 3]\(5) -> [4]\(5) -> []\(5) -> [5]<br/>
      idx[0 1 4]\(5) ->[0 1]\(5) -> [0]\(5) -> []\(5) -> [5]<br/>
+# House Robber / Paint House
+[198. House Robber](https://leetcode.com/problems/house-robber/description/) &nbsp;&nbsp; 不偷连续两家。ans[i] = max(ans[i-1], nums[i] + ans[i-1]) <br/>
+[213. House Robber II](https://leetcode.com/problems/house-robber-ii/description/) &nbsp;&nbsp; 不偷连续两家，房屋是一个环。DP从nums[0]开始，再算一次从nums[1]开始。
+[337. House Robber III](https://leetcode.com/problems/house-robber-iii/description/) &nbsp;&nbsp; 不偷连续两家，房屋是二叉树。post order traverse， steal_root = not_steal_left + not_steal_right, not_steal_root = max(yes left + yes right, yea left + not right, not left + yes right, not left + not right), return steal_root, not_steal_root <br/>
+[256. Paint House](https://leetcode.com/problems/paint-house/) &nbsp;&nbsp; 三种颜色不同cost，连续两家颜色不同，求 min tot cost。
+cost[i_house][a_color] = min(cost[i-1][b], cost[i-1][c]) + cost[a]) <br/>
+[265. Paint House II](https://leetcode.com/problems/paint-house-ii/description/) &nbsp;&nbsp; k种颜色不同cost，连续两家颜色不同。
+cost[i_house][j_color] = min(costs[i-1][:] except costs[i-1][j])，因此需要存前一列的最小、倒数第二小值，以及最小值个数。
+[276. Paint Fence](https://leetcode.com/problems/paint-fence/description/) &nbsp;&nbsp; k种颜色刷围栏，不能连续三个颜色相同，求多少种刷法。a0=k, a1=k*k, a2=(k*k*(k-1) if a2 diff from a1) + (a0 (k-1) * a1 k*k if a2 same with a1, then a0 should be diff from a1) <br/>
 
 # Word Break / Split Array
 [139. Word Break](https://leetcode.com/problems/word-break/description/)&nbsp;&nbsp; 给一个长字符串 s 和单词表，是否能将 s 分解成单词表中都有的单词。<br/>
