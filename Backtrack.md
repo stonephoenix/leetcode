@@ -1,4 +1,5 @@
-通常借用 hashtable 保存状态，一些简单的见[Hashtable](https://github.com/stonephoenix/leetcode/blob/main/Hashtable.md)
+通常借用 hashtable 保存状态，一些简单的见[Hashtable](https://github.com/stonephoenix/leetcode/blob/main/Hashtable.md)<br/>
+简单热身题：[78. Subsets](https://leetcode.com/problems/subsets/description/), [90. Subsets II](https://leetcode.com/problems/subsets-ii/description/) 去重
 # 一般为排列组合类问题，通过剪枝 O(2^N) -> O(2^K)
 
 ## 括号问题: 
