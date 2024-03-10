@@ -3,7 +3,7 @@
 
 ## 括号问题: 
 ### 性质1: 右括号一多，即可判定 invalid，左括号多，需要到最后才能判定。
-### 性质2: invalid 的情形只能是 左区间 s[0:k+1] 右括号多，右括号多的右边界需要在每次碰到)时就更新；右区间 s[k+1:] 左括号多
+### 性质2: invalid 的情形只能是 左区间 s[0:k+1] 右括号多，右括号多的右边界需要在每次碰到 ) 且状态为invalid就更新；右区间 s[k+1:] 左括号多
 
 [22. Generate Parentheses](https://leetcode.com/problems/generate-parentheses/description/) &nbsp;&nbsp; 基本 backtrack，类似还有 17 九宫格按键能表达的字母组合 <br/>
 [2267. Check if There Is a Valid Parentheses String Path](https://leetcode.com/problems/check-if-there-is-a-valid-parentheses-string-path/description/) &nbsp;&nbsp; 二维，性质1 <br/>
