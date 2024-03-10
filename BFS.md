@@ -1,3 +1,30 @@
+Grid min steps 代码通用模板：
+```Python3
+m, n = len(grid), len(grid[0])
+start_status = (i, j, mark)
+# 重复访问 i, j 时，有时候需要再判断另外一个标记才能确认是否为重复访问。例如：grid里有墙，可以敲掉 k 块墙；多人最近汇合点中标记已经有 k 个人汇合；
+dq = deque([[start_status, steps=0]])
+visted = set([start_status])
+
+while dq:
+  (i, j, mark), steps = dq.popleft()
+
+  if i == i_end and j == j_end and mark == mark_end:
+    return steps
+
+  for di, dj in [[-1, 0], [1, 0], [0, -1], [0, 1]]:
+    ni, nj = i + di, j + dj
+    if 0 <= ni < m and 0 <= nj < n:
+      newmark = update_mark()
+      if (ni, nj, newmark) not in visted:
+        visted.add((ni, nj, newmark))
+        dq.append([(ni, nj, newmark), steps + 1])
+return -1
+```
+# 自定义 status 
+[773. Sliding Puzzle](https://leetcode.com/problems/sliding-puzzle/description/) &nbsp;&nbsp; 1至m*n-2填充在m*n grid中，有一个block值为0，该block可以与上下左右进行交换，求最少多少步可以让grid恢复成[[1,2,3],[4,5,0]]状态。<br/>
+解：status 定义为 board 所有数字位置的状态（自定义一个hash值）。
+
 # min steps in Grid/Matrix
 [490. The Maze](https://leetcode.com/problems/the-maze/description/) &nbsp;&nbsp; 足球滚到墙边才停， 问是否 可以从 start 到 destination <br/>
 [505. The Maze II](https://leetcode.com/problems/the-maze-ii/description/) &nbsp;&nbsp; 足球滚到墙边才停，问最少滚动多少步 可以从 start 到 destination <br/>
