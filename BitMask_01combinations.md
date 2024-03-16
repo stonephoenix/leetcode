@@ -5,3 +5,5 @@
 解：既需要行方向，与每个单词找 diff， 又需要列方向，找 i 位与所有单词是否有diff，再列的各种组合，实现或之后均不同。
 
 
+[2035. Partition Array Into Two Arrays to Minimize Sum Difference](https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/description/) &nbsp;&nbsp; 2N个数，均分两组，求两组和差值最小。<br/>
+解：直接分成 N + N，左右分别遍历所有组合并求和，然后左出一个数，在右边出 N-1 个数的组合中 BS 找和最接近 sum/2 的值，以些类推。
