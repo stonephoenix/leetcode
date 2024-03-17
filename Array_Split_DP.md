@@ -2,8 +2,7 @@
 
 [548. Split Array with Equal Sum](https://leetcode.com/problems/split-array-with-equal-sum/description/) &nbsp;&nbsp; memo[i][j] = sum(nums[i:(j+1)])
 
-## 通常是找 min/max sum(cost)，构建转移公式实现 DP，将排列组合 K！复杂度降为 K^2。
-## <span style="color:red;">还有一种看上去相近，需要找 min(每一段的 max(cost)), 需要找某单边区间最小/大值 </span>，此时问题转变为 binary search 问题，核心是构建 is_valid(). 例如 [410. Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/description/)
+## 通常是找 min/max sum(cost)，构建转移公式实现 DP，将排列组合 K！复杂度降为 K^2。<br/> <span style="color:red;">还有一种看上去相近，需要找 min(每一段的 max(cost)), 需要找某单边区间最小/大值 </span>，此时问题转变为 binary search 问题，核心是构建 is_valid(). 例如 [410. Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/description/)
 [2547. Minimum Cost to Split an Array](https://leetcode.com/problems/minimum-cost-to-split-an-array/description/) &nbsp;&nbsp; importance value (IV) = len(duplicated numbers in subarray), 找到 split 的方法，让 sum(IV) 最小。<br/>
 解：split 的题通常都可以使用递归方式来解，右侧作为整体不 split，从一个 item 开始扩展更多的 item, 左侧可以 split。然后用 DP 的思路，左侧可以split的结果存在 memo 中。
 ''' 
