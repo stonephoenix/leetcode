@@ -1,4 +1,4 @@
-# 找到 subset 和/均值/最大小值 满足一些要求，<br/> 只要求返回boolean时，最常用的是一边找一边cache，假如 sum 不大时，mark[i][sum]=True，注意更新时 从大到小 更新，否则数据被污染；<br/>若需要返回值，通常需要用 bitmask 遍历所有组合，为减少复杂度，先分左右两半。
+# 找到 subset 和/均值/最大小值 满足一些要求，<br/> 只要求返回boolean时，最常用的是一边找一边cache，假如 sum 不大时，mark[i][sum]=True，注意更新时 从大到小 更新，否则数据被污染；<br/>若需要返回值，通常需要用 bitmask 遍历所有组合，为减少复杂度，先分左右两半。<br/>注意另一种 split array，通常用DP即可（array中插挡板）
 ```Python3
 @lru_cache(None)
 def find(target, k, i):
@@ -12,6 +12,11 @@ def find(target, k, i):
 
 [805. Split Array With Same Average](https://leetcode.com/problems/split-array-with-same-average/description/) &nbsp;&nbsp; subset 均值 与全局均值相同。<br/>
 解：直接用上面 cache 方法即可。
+
+[446. Arithmetic Slices II - Subsequence](https://leetcode.com/problems/arithmetic-slices-ii-subsequence/) &nbsp;&nbsp; 三个及以上等差数列的个数。不难，就是啰嗦一些。<br/>
+
+[2305. Fair Distribution of Cookies](https://leetcode.com/problems/fair-distribution-of-cookies/description/) &nbsp;&nbsp; 分配给 K 个桶，求所有桶最大值的下限。backtrack + 简单剪枝（不要多想）<br/>
+
 
 [1049. Last Stone Weight II](https://leetcode.com/problems/last-stone-weight-ii/description/) &nbsp;&nbsp; subset 和最接近总和一半，mark[i][sum]=True，注意更新时 从大到小 更新。<br/>
 
