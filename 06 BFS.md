@@ -1,24 +1,24 @@
-Grid min steps 代码通用模板：
+Grid min steps 代码通用模板，注意：重复访问 i, j 时，不能仅靠boolean标记，有时候需要再判断 status 才能确认是否为重复访问。例如：[1293 grid里有墙，可以敲掉 k 块墙](https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/description/)；[296 最佳汇合点中标记已经有 k 个人汇合](https://leetcode.com/problems/best-meeting-point/description/)；[864 已经拿到了几个钥匙](https://leetcode.com/problems/shortest-path-to-get-all-keys/) <br/>
+${\color{red}\textbf{扩展到图中}}$，[847 最短路径遍历所有点](https://leetcode.com/problems/shortest-path-visiting-all-nodes/description/)，status=(cur_node, visted_bitmask), 其中 visted_bitmask 可以理解成 864 中已经拿了几个钥匙（相当于每个节点都是钥匙）
 ```Python3
 m, n = len(grid), len(grid[0])
-start_status = (i, j, mark)
-# 重复访问 i, j 时，有时候需要再判断另外一个标记才能确认是否为重复访问。例如：grid里有墙，可以敲掉 k 块墙；多人最近汇合点中标记已经有 k 个人汇合；
+start_status = (i, j, status)
 dq = deque([[start_status, steps=0]])
 visted = set([start_status])
 
 while dq:
-  (i, j, mark), steps = dq.popleft()
+  (i, j, status), steps = dq.popleft()
 
-  if i == i_end and j == j_end and mark == mark_end:
+  if i == i_end and j == j_end and status == status_end:
     return steps
 
   for di, dj in [[-1, 0], [1, 0], [0, -1], [0, 1]]:
     ni, nj = i + di, j + dj
     if 0 <= ni < m and 0 <= nj < n:
-      newmark = update_mark()
-      if (ni, nj, newmark) not in visted:
-        visted.add((ni, nj, newmark))
-        dq.append([(ni, nj, newmark), steps + 1])
+      news_tatus = update_status()
+      if (ni, nj, new_status) not in visted:
+        visted.add((ni, nj, new_status))
+        dq.append([(ni, nj, new_status), steps + 1])
 return -1
 ```
 # 自定义 status , 剪枝
