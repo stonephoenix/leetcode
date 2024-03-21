@@ -17,7 +17,7 @@ for k in range(n):
 [847. Shortest Path Visiting All Nodes](https://leetcode.com/problems/shortest-path-visiting-all-nodes/editorial/) &nbsp;&nbsp; 最短路径遍历所有点（可重复经过）<br/>
 解：类比 grid 取钥匙问题，相当于每个节点都有一个钥匙，求最短路径拿到所有钥匙。BFS，status = (cur_node, visted_bitmask) <br/>
 还可以先找出两两之间最短距离，以及路径上经过的点，再dfs遍历所有点，当 mask 被完全染色时 提前停止。__注意：为借助DP，DFS 时一定要把当前状态，以及解决当前状态需要的答案 存下来__
-```
+```Python3
 @lru_cache(None):
 def dfs(node, status):
   if status == end_status:
@@ -28,3 +28,5 @@ def dfs(node, status):
     min_steps = min(min_steps, dfs(new_status, child_node))
   return min_steps
 ```
+
+[943. Find the Shortest Superstring](https://leetcode.com/problems/find-the-shortest-superstring/description/) &nbsp;&nbsp; __变种题，TODO。__ <br/>
