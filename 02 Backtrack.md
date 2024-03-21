@@ -1,5 +1,28 @@
 通常借用 hashtable 保存状态，一些简单的见[Hashtable](https://github.com/stonephoenix/leetcode/blob/main/Hashtable.md)<br/>
-简单热身题：[78. Subsets](https://leetcode.com/problems/subsets/description/), [90. Subsets II](https://leetcode.com/problems/subsets-ii/description/) 去重
+简单热身题：[78. Subsets](https://leetcode.com/problems/subsets/description/), [90. Subsets II](https://leetcode.com/problems/subsets-ii/description/) 去重。注，需要去重时，使用Counter计数，遍历时对计数器进行遍历，这样，每轮backtrack中，有重复的数，也只会被选中一次，而使用原始nums的话，相同的数在同一轮backtrack中会被使用多次
+```Python3
+from collections  import Counter
+a = [1,1,1,2,2]
+
+cnt = Counter(a)
+ans = []
+def comb(cnt, cand=[]):
+    if len(cand) == len(a):
+        ans.append(cand.copy())
+        return
+    # 此处，在cand下一个位置上，一个有重复的数 只会被选用一次
+    # 而使用原数组，对 a 进行遍历时，相同的数会被多次使用。
+    for v in cnt:
+        c = cnt[v]
+        if c == 0:
+            continue
+        cnt[v] -= 1
+        cand.append(v)
+        comb(cnt, cand)
+        cand.pop()
+        cnt[v] += 1
+comb(cnt)
+```
 # 一般为排列组合类问题，通过剪枝 O(2^N) -> O(2^K)
 
 ## 括号问题: 
