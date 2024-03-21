@@ -36,3 +36,8 @@ def minimumXORSum(self, nums1: List[int], nums2: List[int]) -> int:
 
 [2035. Partition Array Into Two Arrays to Minimize Sum Difference](https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/description/) &nbsp;&nbsp; 2N个数，均分两组，求两组和差值最小。<br/>
 解：直接分成 N + N，左右分别遍历所有组合并求和，然后左出一个数，在右边出 N-1 个数的组合中 BS 找和最接近 sum/2 的值，以些类推。
+
+[847. Shortest Path Visiting All Nodes](https://leetcode.com/problems/shortest-path-visiting-all-nodes/description/) &nbsp;&nbsp; 最短步数遍历图中所有点。<br/>
+解：可以用BFS做, status=(cur_node, visted_node_bitmask), memo[status]=steps for status to reach end. 还可以先用 Floyd-Warshall 方法找到所有 ij pair 之间的最短距离，然后DFS遍历所有点，bitmask 全为1时提前结束。<br/>
+
+[1655. Distribute Repeating Integers](https://leetcode.com/problems/distribute-repeating-integers/description/) &nbsp;&nbsp; 先做小组合，然后再去 fit, 类似于 847。__TODO__ <br/>
