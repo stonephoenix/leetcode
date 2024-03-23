@@ -42,4 +42,4 @@ def minimumXORSum(self, nums1: List[int], nums2: List[int]) -> int:
 
 [1494. Parallel Courses II](https://leetcode.com/problems/parallel-courses-ii/description/) &nbsp;&nbsp; 看起来可以根据depth使用priority queue来做，但这种greedy方法并不是最优。只能暴力所有可选课的组合+bitmask+lru_cache来解。<br/>
 
-[1655. Distribute Repeating Integers](https://leetcode.com/problems/distribute-repeating-integers/description/) &nbsp;&nbsp; 先做小组合，然后再去 fit, 类似于 847。__TODO__ <br/>
+[1655. Distribute Repeating Integers](https://leetcode.com/problems/distribute-repeating-integers/description/) &nbsp;&nbsp; 先做小组合，然后再去 fit, 类似于 847。 <br/>
