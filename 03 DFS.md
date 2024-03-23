@@ -20,6 +20,26 @@ def find(root, target, depth, path=[]):
     return -1
 ```
 [2467. Most Profitable Path in a Tree](https://leetcode.com/problems/most-profitable-path-in-a-tree/submissions/1206529851/) &nbsp;&nbsp; DFS find，同时找中间。<br/>
+
+有向图判断环：可以用BFS中的 Kahn 方法，把 indegree==0 的结点一个个删掉。也可以用 DFS + visted + cur_path 的标准解法。
+```
+loop = False
+visted = [0] * n
+cur_path = [0] * n
+def dfs(i):
+    nonlocal loop
+    if cur_path[i]:
+        loop = True
+        return
+    if visted[i]:
+        return
+    visted[i] = cur_path[i] = 1
+    for child in get_child(i):
+        dfs(child)
+    # 注意回退时清空当前路径
+    cur_path[i] = 0
+[dfs(i) for i in range(n)]
+```
 # Grid
 [1391. Check if There is a Valid Path in a Grid](https://leetcode.com/problems/check-if-there-is-a-valid-path-in-a-grid/) &nbsp;&nbsp; grid 中有不同的道路形状（从左至右/右至左，从左拐至上方/上方拐至左方），问是否能从左上角走至右下角 <br/>
 解：题简单，关键是构建状态转移时，需要保持方向定义一致，进入时以本block为准，出去时以下一block为准。<br/>
