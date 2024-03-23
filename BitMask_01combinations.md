@@ -40,4 +40,6 @@ def minimumXORSum(self, nums1: List[int], nums2: List[int]) -> int:
 [847. Shortest Path Visiting All Nodes](https://leetcode.com/problems/shortest-path-visiting-all-nodes/description/) &nbsp;&nbsp; 最短步数遍历图中所有点。<br/>
 解：可以用BFS做, status=(cur_node, visted_node_bitmask), memo[status]=steps for status to reach end. 还可以先用 Floyd-Warshall 方法找到所有 ij pair 之间的最短距离，然后DFS遍历所有点，bitmask 全为1时提前结束。<br/>
 
+[1494. Parallel Courses II](https://leetcode.com/problems/parallel-courses-ii/description/) &nbsp;&nbsp; 看起来可以根据depth使用priority queue来做，但这种greedy方法并不是最优。只能暴力所有可选课的组合+bitmask+lru_cache来解。<br/>
+
 [1655. Distribute Repeating Integers](https://leetcode.com/problems/distribute-repeating-integers/description/) &nbsp;&nbsp; 先做小组合，然后再去 fit, 类似于 847。__TODO__ <br/>
