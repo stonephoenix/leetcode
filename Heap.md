@@ -20,3 +20,7 @@ a.bisect(3), a.bisect_left(3), a.bisect_right(3), a.bisect_right(7)
 [871. Minimum Number of Refueling Stops](https://leetcode.com/problems/minimum-number-of-refueling-stops/description/)&nbsp;&nbsp; 给初始油量，以及加油站 位置 及 油量 列表，求最少加几次油到目标点。<br/>
 解：在能到达的范围内，先去油量最大的加油站。 <br/>
 
+[630. Course Schedule III](https://leetcode.com/problems/course-schedule-iii/description/) &nbsp;&nbsp; 已知课时长度，和最晚修完时间，同一时间只能修一门课，问最多能修完几门课。<br/>
+解：先画图（背下来）得出结论，__先修结束时间早的课，能达到收益最大。__ 因此先按最晚结束时间排序，维护 status=已选课总共时长=下一课开始时间，遍历所有课，假如能修完，加到selected队列中，假如不能，若课时长，小于已选课最大时长，做替换（这样能腾出更多时间），更新 status。<br/>
+
+
