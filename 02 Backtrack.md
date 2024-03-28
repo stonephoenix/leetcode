@@ -48,3 +48,6 @@ __[301. Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid
 # Subset 通常 memo + [bit mask](https://github.com/stonephoenix/leetcode/edit/main/BitMask_01combinations.md) 在一起
 [698. Partition to K Equal Sum Subsets](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/description/) &nbsp;&nbsp; memo + bit mask <br/>
 解：还有一个不好理解的方法，avg = sum(nums) // k，从抽样一个开始，遍历所有抽样形式，memo[mask] = subsum % avg ，值必然会小于 avg，因此只有小于等于 k-2 个 subset 各自的和是 avg 的整数倍时，memo[mask=all_ones] > 0. 反过来，当 memo[mask=all_ones] = 0 时，说明必然有 k 个 subset 各自的和是 avg。<br/>
+
+# word split
+[93. Restore IP Addresses](https://leetcode.com/problems/restore-ip-addresses/description/) __注意返回为 list 类型时，单一字符串綶需要加括号[s]__
