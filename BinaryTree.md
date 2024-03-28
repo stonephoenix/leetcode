@@ -1,6 +1,14 @@
 
 # Binary Tree
-
+```Python3
+def lca(root, a, b):
+  if not root: return root
+  if root.val == a or root.val == b: return root
+  left = lca(root.left, a, b)
+  right = lca(root.right, a, b)
+  if left and right: return root
+  return left if left else right
+```
 
 # Binary Search Tree
 [1382. Balance a Binary Search Tree](https://leetcode.com/problems/balance-a-binary-search-tree/description/) &nbsp;&nbsp; 平衡二叉树<br/>
