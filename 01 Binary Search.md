@@ -6,3 +6,6 @@
 [1011. Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/description/)<br/>
 [410. Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/description/)
 
+## 一些简单上手题
+[1901. Find a Peak Element II](https://leetcode.com/problems/find-a-peak-element-ii/description/) 快速找到 Max 值，DFS走较大值路径。<br/>
+
