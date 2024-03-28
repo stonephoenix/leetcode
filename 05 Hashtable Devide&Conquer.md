@@ -8,3 +8,8 @@
 
 [37. Sudoku Solver](https://leetcode.com/problems/sudoku-solver/description/) &nbsp;&nbsp; <br/>
 解：注意 inplace 的时候，找到答案后，不能再更改 board 中的元素。<br/>
+
+# Devide & Conquer
+[935. Knight Dialer](https://leetcode.com/problems/knight-dialer/description/) &nbsp;&nbsp; 连续N步，状态有重复的，用分治法。<br/>
+解: memo[(start, n_jump)] = dict(key=end_point, value=count) <br/>
+
