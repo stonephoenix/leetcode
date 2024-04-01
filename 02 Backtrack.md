@@ -23,7 +23,8 @@ def comb(cnt, cand=[]):
         cnt[v] += 1
 comb(cnt)
 ```
-# 一般为排列组合类问题，通过剪枝 O(2^N) -> O(2^K)
+# 一般为排列组合类问题，通过剪枝 O(2^N) -> O(2^K) <br/> 若不区分组合内具体元素，可简化为[DP问题](07%20DP.md)
+如凑硬币，[0/1背包型买股票](https://leetcode.com/problems/maximum-profit-from-trading-stocks/description/)
 
 ## 括号问题: 
 ### 性质1: 右括号一多，即可判定 invalid，左括号多，需要到最后才能判定。
