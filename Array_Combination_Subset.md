@@ -17,11 +17,12 @@ def find(target, k, i):
 
 [2305. Fair Distribution of Cookies](https://leetcode.com/problems/fair-distribution-of-cookies/description/) &nbsp;&nbsp; 分配给 K 个桶，求所有桶最大值的下限。backtrack + 简单剪枝（不要多想）<br/>
 
-
 [1049. Last Stone Weight II](https://leetcode.com/problems/last-stone-weight-ii/description/) &nbsp;&nbsp; subset 和最接近总和一半，mark[i][sum]=True，注意更新时 从大到小 更新。<br/>
-
-
 
 [956. Tallest Billboard](https://leetcode.com/problems/tallest-billboard/description/) &nbsp;&nbsp; 找两个不相交的 subset 它们和相同。<br/>
 解：注意不是找一个subset的组合问题，因此不能先backtrack找一个subset，加上mask，再backtrack找另外一个subset，会有很多重复判断。<br/>
 直接遍历所有 <rod_left_list, rod_right_list> 的组合，为减少复杂度，先将array分成左右两半。为快速找到 sum( array_left: rod_left_list) + sum( array_right: rod_left_list) == sum(array_left|right: rod_right_list), 注意到是一个 two sum equal 问题，因此可以使用 diff 的技巧：计算 diff = sum(rod_left) - sum(rod_right), 左右两半array中 diff 为负数时即为结果。
+
+# subarray 必须包含区间，求个数，可以用区间 左侧个数 * 右侧个数
+[2962. Count Subarrays Where Max Element Appears at Least K Times](https://leetcode.com/problems/count-subarrays-where-max-element-appears-at-least-k-times/description/?envType=daily-question&envId=2024-03-29);&nbsp; 看起来复杂，其实不难，别慌。<br/>
+
